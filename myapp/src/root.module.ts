@@ -4,10 +4,11 @@ import { Module } from '@nestjs/common';
 import { UsersModule } from './users.module';
 import { OrdersModule } from './orders.module';
 import { ChatModule } from './chat.module';
+import { BookController } from './app.controller';
 
 @Module({
   imports: [UsersModule, OrdersModule, ChatModule],
-   controllers: [],
+   controllers: [BookController],
    providers: [],
    exports: [],
 })
