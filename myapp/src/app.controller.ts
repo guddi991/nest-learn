@@ -1,32 +1,39 @@
 /* eslint-disable prettier/prettier */
 
 import { Controller, Delete, Put, Post, Get, Param } from "@nestjs/common";
+import { BookService } from "./book.service";
 
 @Controller("book")
 export class BookController{
 
+    // creating object for book service
+    //public bookService : BookService = new BookService();
+    
+    // instead of using object we are injection the book service using "Providers".
+    constructor(private bookService: BookService){}
+    
     // add book
-    @Post("/add")
+    @Post('/add')
     addBook() : string{
-        return "This will add book."
+        return this.bookService.addBook();
     }
 
     // delete book
-    @Delete("/delete")
+    @Delete('/delete')
     deleteBook() : string{
-        return "This will delete book."
+        return this.bookService.deleteBook();
     }
 
     // update book
-    @Put("/update")
+    @Put('/update')
     updateBook() : string{
-        return "This will update book."
+        return this.bookService.updateBook();
     }
 
     // find all book
-    @Get("/all-books")
+    @Get('/all-books')
     allBook() : string{
-        return "This will find all books"
+        return this.bookService.findBook();
     }
 
     // find book by id
